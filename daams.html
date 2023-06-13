@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daams Studios</title>
+   <!--link to css-->
+   <link rel="stylesheet" href="daams.css">
+
+   <!--box icon-->
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <!---header-->
+
+    <header>
+        <a href="#home" class="logo"><img src="daams_studios-removebg-preview.png" alt=""></a>
+        <div class="menu" id="menu-icon">
+            <img src="menu.png" alt="" width="30px" height="30px">
+        </div>
+
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
+        </ul>
+        
+    </header>
+
+
+    <!--home section-->
+    <section class="home" id="home">
+        <div class="text">
+            <h1><span>DAAMS.</span> Gaming <br>Studios</h1>
+            <p>Daams studios is a company that create video games, websites, apps, <br> a.i. this company motivate young teenage boys and girls 
+            to do more than their abilities we inspire children to code</p>
+        </div>
+        
+    </section>
+
+
+    <!--aims-->
+    <section class="services" id="services">
+        <div class="heading">
+            <span>Our Services</span>
+        </div>
+        <div class="services-container">
+            <div class="box">
+                <i class='bx bxs-edit-alt'></i>
+                <h2>WEB-DESIGNING</h2>
+                <p>We create different types of websites, We also teach people how to make websites</p>
+            </div>
+
+            <div class="box">
+                <i class='bx bx-game'></i>
+                <h2>GAMING</h2>
+                <p>We have great teachers in charge of games,we make different type of game like relaxation game, spy games , fighting games 
+                    and so on
+                </p>
+            </div>
+
+            <div class="box">
+                <i class='bx bxs-food-menu'></i>
+                <h2>APP-DESIGNING</h2>
+                <p>We create app for company,and we also teach people basics and how to create apps </p>
+            </div>
+        </div>
+    </section>
+
+    <!--about us-->
+    <section class="about" id="about">
+        <div class="heading">
+            <span>About Us</span>
+            <h1>Customer Experience</h1>
+        </div>
+
+
+        <div class="about-container">
+            <div class="about-img">
+                <img src="flat-lay-gamepad-desktop-night-removebg-preview.png" alt="">
+            </div>
+
+
+            <div class="about-text">
+                <span>About Us</span>
+                <p> Daams studios is a company that create websites, games and apps, we motivate young people to bring out their best 
+                    we bring more coders to the internet.
+                </p>
+                <a href="#"  class="btn">Learn more</a>
+            </div>
+        </div>
+    </section>
+    <!--sponsors-->
+    <section class="sponsors" id="sponsors">
+        <h2>Powered by le<span class="">xx</span>a</h2>
+        <div class="box">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <input type="text" id="name" class="form-control" placeholder="Your name..." required>
+                <input type="email" id="email" class="form-control" placeholder="Your email..." required>
+                <input type="text" id="phone" class="form-control" placeholder="Phone no" required>
+               <button type="submit" class="btn" onclick="sendEmail()">Send</button>
+            </form>
+        </div>
+    </section>
+    <div class="copyright">
+        <p>&#169;   |  DAAMS STUDIOS.</p>
+    </div>
+</body>
+
+
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+    
+
+let menu = document.querySelector('#menu-icon');
+let navbar = document.querySelector('.navbar');
+
+menu.onclick = () => {
+    menu.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+}
+window.onscroll = () => {
+    menu.classList.remove('bx-x');
+    navbar.classList.remove('active');
+}
+
+const sr = ScrollReveal ({
+ distance: '60px',
+ duration: 2500,
+ delay: 400,
+ reset:true
+})
+
+
+sr.reveal('.text',{delay:200, origin:'top'})
+sr.reveal('.heading',{delay:800, origin:'top'})
+sr.reveal('.services-container .box',{delay:600, origin:'top'})
+sr.reveal('.about-container .box',{delay:600, origin:'top'})
+sr.reveal('.about-img',{delay:200, origin:'left'})
+sr.reveal('.sponsors .box',{delay:600, origin:'botom'})
+sr.reveal('header',{delay:600, origin:'botom'})
+
+function sendEmail(){
+    var params ={
+        name: document.getElementById("name").value ,
+        email: document.getElementById("email").value ,
+        phone: document.getElementById("phone").value ,
+    };
+    
+const serviceID = "service_k62df8i";
+const templateID = "template_jktf3kb"
+
+emailjs.send(serviceID,templateID,params)
+.then(
+    res =>{
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+
+        console.log(res);
+        alert("successful");
+    })
+.catch(err=>console.log(err));
+}
+</script>
+
+
+
+
+</html>
